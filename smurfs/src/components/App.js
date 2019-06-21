@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // actions
-import { getSmurfs, addSmurf } from '../actions/index';
+import { getSmurfs, addSmurf, deleteSmurf } from '../actions/index';
 
 // styles
 import './App.css';
@@ -42,19 +42,30 @@ class App extends Component {
     });
   };
 
+  deleteSmurf = e => {
+    e.preventDefault();
+    const id = this.state.smurfs.id;
+    this.props.deleteSmurf(id).then(res => {
+      if (res) {
+        this.props.history.push('/');
+      }
+    });
+  };
+
   render() {
-    console.log(this.props);
+    console.log('props from render in app', this.props);
     return (
       <div className='App'>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div className='smurfs-container'>
           {this.props.smurfs.map(smurf => (
             <div className='smurf-card'>
-              <h1>{smurf.name}</h1>
+              <h1 onClick={this.deleteSmurf}>{smurf.name}</h1>
               <p>
                 {smurf.name} is {smurf.age} years old!
               </p>
-              <p>He's also {smurf.height}cm tall!</p>
+              <p>He's also {smurf.height} tall!</p>
+              <p>He is Smurf #{smurf.id}</p>
             </div>
           ))}
         </div>
@@ -65,18 +76,24 @@ class App extends Component {
               name='name'
               value={this.state.smurfs.name}
               onChange={this.handleChange}
+              placeholder='Name'
+              required
             />
             <input
               type='number'
               name='age'
               value={this.state.smurfs.age}
               onChange={this.handleChange}
+              placeholder='Age'
+              required
             />
             <input
-              type='number'
+              type='text'
               name='height'
               value={this.state.smurfs.height}
               onChange={this.handleChange}
+              placeholder='Height'
+              required
             />
             <button>Add Smurf</button>
           </form>
@@ -88,10 +105,12 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
-  addingSmurf: state.addingSmurf
+  addingSmurf: state.addingSmurf,
+  deletingSmurf: state.deletingSmurf,
+  updatingSmurf: state.updatingSmurf
 });
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, addSmurf }
+  { getSmurfs, addSmurf, deleteSmurf }
 )(App);

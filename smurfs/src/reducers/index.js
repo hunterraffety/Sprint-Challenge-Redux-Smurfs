@@ -9,7 +9,10 @@ import {
   FETCHING_FAILURE,
   ADDING_START,
   ADDING_SUCCESS,
-  ADDING_FAILURE
+  ADDING_FAILURE,
+  DELETE_START,
+  DELETE_SUCCESS,
+  DELETE_FAILURE
 } from '../actions/index';
 
 /*
@@ -26,12 +29,12 @@ import {
 
 // initial state
 const initialState = {
-  smurfs: [],
-  fetchingSmurfs: false,
   addingSmurf: false,
-  updatingSmurf: false,
   deletingSmurf: false,
-  error: ''
+  error: '',
+  fetchingSmurfs: false,
+  smurfs: [],
+  updatingSmurf: false
 };
 
 /*
@@ -75,14 +78,30 @@ export const reducer = (state = initialState, action) => {
         ...state,
         error: '',
         addingSmurf: false,
-        smurfs: [
-          /*...state.smurfs, ...action.payload*/
-        ]
+        smurfs: []
       };
     case ADDING_FAILURE:
       return {
         ...state,
         addingSmurf: false,
+        error: action.payload
+      };
+    case DELETE_START:
+      return {
+        ...state,
+        deletingSmurf: true,
+        error: ''
+      };
+    case DELETE_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        deletingSmurf: action.payload
+      };
+    case DELETE_FAILURE:
+      return {
+        ...state,
+        deletingSmurf: false,
         error: action.payload
       };
     default:

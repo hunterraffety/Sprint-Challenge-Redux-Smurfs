@@ -1,8 +1,44 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .add-smurf-form {
+  background: pink;
+  border-radius: 7px;
+  border: 1px solid black;
+  width: 50%;
+  margin: 1.5rem;
+}
+
+form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 100%;
+}
+
+.smurf-card h1 {
+  padding: 1rem;
+  border: 1px solid dodgerblue;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+input {
+  width: 75%;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+button {
+  border: 1px solid dodgerblue;
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
 }
