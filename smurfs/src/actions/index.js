@@ -39,3 +39,15 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: FETCHING_FAILURE, payload: err.response.data.error });
     });
 };
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({ type: ADDING_START });
+  return axios
+    .post('http://localhost:3333/smurfs', smurf)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

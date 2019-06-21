@@ -54,13 +54,35 @@ export const reducer = (state = initialState, action) => {
     case FETCHING_SUCCESS:
       return {
         ...state,
+        error: '',
         fetchingSmurfs: false,
-        error: ''
+        smurfs: [...state.smurfs, ...action.payload]
       };
     case FETCHING_FAILURE:
       return {
         ...state,
         fetchingSmurfs: true,
+        error: action.payload
+      };
+    case ADDING_START:
+      return {
+        ...state,
+        addingSmurf: true,
+        error: ''
+      };
+    case ADDING_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        addingSmurf: false,
+        smurfs: [
+          /*...state.smurfs, ...action.payload*/
+        ]
+      };
+    case ADDING_FAILURE:
+      return {
+        ...state,
+        addingSmurf: false,
         error: action.payload
       };
     default:
