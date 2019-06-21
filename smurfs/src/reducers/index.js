@@ -45,6 +45,24 @@ const initialState = {
 // reducer
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCHING_START:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: ''
+      };
+    case FETCHING_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: ''
+      };
+    case FETCHING_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: action.payload
+      };
     default:
       return state;
   }

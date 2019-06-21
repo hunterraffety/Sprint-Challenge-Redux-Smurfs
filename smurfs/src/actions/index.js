@@ -27,14 +27,15 @@ export const ADDING_FAILURE = 'ADDING_FAILURE';
 */
 
 // action creators
-export const getSmurfs = dispatch => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_START });
   return axios
-    .post('http://localhost:3333/api/smurfs')
+    .get('http://localhost:3333/smurfs')
     .then(res => {
-      console.log(`coming from actions / post: `, res);
+      console.log(`coming from actions / post: `, res.data);
+      dispatch({ type: FETCHING_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err);
+      dispatch({ type: FETCHING_FAILURE, payload: err.response.data.error });
     });
 };
