@@ -44,12 +44,8 @@ class App extends Component {
 
   deleteSmurf = e => {
     e.preventDefault();
-    console.log('whats upppp', this.props.deleteSmurf);
-    this.props.deleteSmurf(this.state.smurfs.id).then(res => {
-      if (res) {
-        this.props.history.push('/');
-      }
-    });
+    console.log('whats upppp', this.props.smurfs);
+    this.props.deleteSmurf(this.props.smurfs.id);
   };
 
   render() {
@@ -60,12 +56,12 @@ class App extends Component {
         <div className='smurfs-container'>
           {this.props.smurfs.map(smurf => (
             <div className='smurf-card'>
-              <h1 onClick={this.deleteSmurf}>{smurf.name}</h1>
+              <h1>{smurf.name}</h1>
               <p>
                 {smurf.name} is {smurf.age} years old!
               </p>
               <p>He's also {smurf.height} tall!</p>
-              <p>He is Smurf #{smurf.id}</p>
+              <p onClick={this.deleteSmurf}>He is Smurf #{smurf.id}</p>
             </div>
           ))}
         </div>

@@ -97,6 +97,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
+        deletingSmurf: false,
         smurfs: action.payload
       };
     case DELETE_FAILURE:

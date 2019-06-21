@@ -62,11 +62,12 @@ export const addSmurf = smurf => dispatch => {
 };
 
 export const deleteSmurf = id => dispatch => {
+  console.log('whats the smurf?', id);
   dispatch({ type: DELETE_START });
   return axios
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(res => {
-      console.log(`from delete`, res);
+      console.log('whats in res', res);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });
     })
     .catch(err => {

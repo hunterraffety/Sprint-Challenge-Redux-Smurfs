@@ -7,7 +7,7 @@
 }
 
 .add-smurf-form {
-  background: pink;
+  background: dodgerblue;
   border-radius: 7px;
   border: 1px solid black;
   width: 50%;
@@ -20,6 +20,7 @@ form {
   align-items: center;
   flex-direction: column;
   width: 100%;
+  margin: 1rem;
 }
 
 .smurf-card h1 {
