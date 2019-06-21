@@ -61,11 +61,11 @@ export const addSmurf = smurf => dispatch => {
     });
 };
 
-export const deleteSmurf = id => dispatch => {
-  console.log('whats the smurf?', id);
+export const deleteSmurf = smurf => dispatch => {
+  console.log('whats the smurf?', smurf);
   dispatch({ type: DELETE_START });
   return axios
-    .delete(`http://localhost:3333/smurfs/${id}`)
+    .delete(`http://localhost:3333/smurfs/${smurf}`)
     .then(res => {
       console.log('whats in res', res);
       dispatch({ type: DELETE_SUCCESS, payload: res.data });

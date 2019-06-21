@@ -37,15 +37,15 @@ class App extends Component {
     // console.log(`lasdlkasdlkasdlk`, this.props.addSmurf);
     this.props.addSmurf(this.state.smurfs).then(res => {
       if (res) {
-        this.props.history.push('/');
+        this.props.history.push('/home');
       }
     });
   };
 
   deleteSmurf = e => {
     e.preventDefault();
-    console.log('whats upppp', this.props.smurfs);
-    this.props.deleteSmurf(this.props.smurfs.id);
+    console.log('whats upppp', e);
+    this.props.deleteSmurf(e.target.id);
   };
 
   render() {
@@ -61,7 +61,9 @@ class App extends Component {
                 {smurf.name} is {smurf.age} years old!
               </p>
               <p>He's also {smurf.height} tall!</p>
-              <p onClick={this.deleteSmurf}>He is Smurf #{smurf.id}</p>
+              <p onClick={this.deleteSmurf} id={smurf.id}>
+                He is Smurf #{smurf.id}
+              </p>
             </div>
           ))}
         </div>
