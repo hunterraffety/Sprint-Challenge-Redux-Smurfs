@@ -29,5 +29,12 @@ export const ADDING_FAILURE = 'ADDING_FAILURE';
 // action creators
 export const getSmurfs = dispatch => {
   dispatch({ type: FETCHING_START });
-  return;
+  return axios
+    .post('http://localhost:3333/api/smurfs')
+    .then(res => {
+      console.log(`coming from actions / post: `, res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
