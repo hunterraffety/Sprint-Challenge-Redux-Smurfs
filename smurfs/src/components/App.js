@@ -34,7 +34,7 @@ class App extends Component {
 
   addSmurf = e => {
     e.preventDefault();
-    console.log(`lasdlkasdlkasdlk`, this.props.addSmurf);
+    // console.log(`lasdlkasdlkasdlk`, this.props.addSmurf);
     this.props.addSmurf(this.state.smurfs).then(res => {
       if (res) {
         this.props.history.push('/');
@@ -44,8 +44,8 @@ class App extends Component {
 
   deleteSmurf = e => {
     e.preventDefault();
-    const id = this.state.smurfs.id;
-    this.props.deleteSmurf(id).then(res => {
+    console.log('whats upppp', this.props.deleteSmurf);
+    this.props.deleteSmurf(this.state.smurfs.id).then(res => {
       if (res) {
         this.props.history.push('/');
       }
@@ -107,7 +107,8 @@ const mapStateToProps = state => ({
   smurfs: state.smurfs,
   addingSmurf: state.addingSmurf,
   deletingSmurf: state.deletingSmurf,
-  updatingSmurf: state.updatingSmurf
+  updatingSmurf: state.updatingSmurf,
+  error: state.error
 });
 
 export default connect(

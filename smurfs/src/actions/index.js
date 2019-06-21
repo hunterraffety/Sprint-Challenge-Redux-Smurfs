@@ -67,7 +67,7 @@ export const deleteSmurf = id => dispatch => {
     .delete(`http://localhost:3333/smurfs/${id}`)
     .then(res => {
       console.log(`from delete`, res);
-      dispatch({ type: DELETE_SUCCESS, payload: res.data.id });
+      dispatch({ type: DELETE_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);

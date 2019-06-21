@@ -90,13 +90,14 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         deletingSmurf: true,
-        error: ''
+        error: '',
+        smurfs: []
       };
     case DELETE_SUCCESS:
       return {
         ...state,
         error: '',
-        deletingSmurf: action.payload
+        smurfs: action.payload
       };
     case DELETE_FAILURE:
       return {
