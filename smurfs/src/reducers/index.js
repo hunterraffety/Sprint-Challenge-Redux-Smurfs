@@ -2,6 +2,7 @@
   Be sure to import in all of the action types from `../actions`
 */
 
+// action imports
 import {
   FETCHING_START,
   FETCHING_SUCCESS,
@@ -23,6 +24,7 @@ import {
  }
 */
 
+// initial state
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
@@ -40,6 +42,7 @@ const initialState = {
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
+// reducer
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     default:

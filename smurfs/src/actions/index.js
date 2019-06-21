@@ -1,8 +1,12 @@
-/* 
+// dependencies
+import axios from 'axios';
+
+/*
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
 
+// action exports
 export const FETCHING_START = 'FETCHING_START';
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
 export const FETCHING_FAILURE = 'FETCHING_FAILURE';
@@ -21,3 +25,9 @@ export const ADDING_FAILURE = 'ADDING_FAILURE';
    U - updateSmurf
    D - deleteSmurf
 */
+
+// action creators
+export const getSmurfs = dispatch => {
+  dispatch({ type: FETCHING_START });
+  return;
+};
